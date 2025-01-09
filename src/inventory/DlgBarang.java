@@ -677,7 +677,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         panelisi2.add(TCari);
 
-        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search.png"))); // NOI18N
         BtnCari.setMnemonic('3');
         BtnCari.setToolTipText("Alt+3");
         BtnCari.setName("BtnCari"); // NOI18N
@@ -801,7 +801,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         panelisi1.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/show_data.png"))); // NOI18N
         BtnAll.setMnemonic('M');
         BtnAll.setText("Semua");
         BtnAll.setToolTipText("Alt+M");
@@ -1335,7 +1335,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(630, 222, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-10-2023" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -2541,7 +2541,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             + " databarang.status='1' and golongan_barang.nama like ? or "
                             + " databarang.status='1' and jenis.nama like ? or "
                             + " databarang.status='1' and databarang.kode_industri like ? or "
-                            + " databarang.status='1' and industrifarmasi.nama_industri like ? order by databarang.nama_brng");
+                            + " databarang.status='1' and industrifarmasi.nama_industri like ? OR "
+                            + " databarang.status='1' AND MATCH(databarang.kode_brng,databarang.nama_brng,databarang.letak_barang) AGAINST(?) "
+                            + " order by databarang.nama_brng");
                 }
                     
                 try {
@@ -2559,6 +2561,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         ps.setString(11, "%" + TCari.getText().trim() + "%");
                         ps.setString(12, "%" + TCari.getText().trim() + "%");
                         ps.setString(13, "%" + TCari.getText().trim() + "%");
+                        ps.setString(14, "%" + TCari.getText().trim() + "%");
                     }
                     rs = ps.executeQuery();
                     while (rs.next()) {
@@ -2642,7 +2645,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     + " data_batch.sisa>0 and data_batch.no_faktur like ? or "
                     + " data_batch.sisa>0 and jenis.nama like ? or "
                     + " data_batch.sisa>0 and databarang.kode_industri like ? or "
-                    + " data_batch.sisa>0 and industrifarmasi.nama_industri like ? order by data_batch.tgl_kadaluarsa");
+                    + " data_batch.sisa>0 and industrifarmasi.nama_industri like ? OR "
+                    + " data_batch.sisa>0 AND MATCH(databarang.kode_brng,databarang.nama_brng,databarang.letak_barang) AGAINST(?) "
+                    + "order by data_batch.tgl_kadaluarsa");
                 try {
                     ps.setString(1, "%" + TCari.getText().trim() + "%");
                     ps.setString(2, "%" + TCari.getText().trim() + "%");
@@ -2659,6 +2664,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     ps.setString(13, "%" + TCari.getText().trim() + "%");
                     ps.setString(14, "%" + TCari.getText().trim() + "%");
                     ps.setString(15, "%" + TCari.getText().trim() + "%");
+                    ps.setString(16, "%" + TCari.getText().trim() + "%");
                     rs = ps.executeQuery();
                     while (rs.next()) {
                         tabMode.addRow(new Object[]{
@@ -2930,7 +2936,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         + " databarang.status='1' and golongan_barang.nama like ? or "
                         + " databarang.status='1' and jenis.nama like ? or "
                         + " databarang.status='1' and databarang.kode_industri like ? or "
-                        + " databarang.status='1' and industrifarmasi.nama_industri like ? order by databarang.nama_brng");
+                        + " databarang.status='1' and industrifarmasi.nama_industri like ? OR "
+                        + " databarang.status='1' AND MATCH(databarang.kode_brng,databarang.nama_brng,databarang.letak_barang) AGAINST(?) "
+                        + "order by databarang.nama_brng");
             }
 
             try {

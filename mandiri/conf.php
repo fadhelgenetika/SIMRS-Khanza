@@ -162,7 +162,7 @@
     
     function getToken() {
         global $username, $password;
-        $header = json_encode(['alg' => 'RS256','typ' => 'JWT']);
+        $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
         $payload = json_encode(['username' => USERNAME, 'password' => PASSWORD, 'date' => strtotime(date('Y-m-d H:')) * 1000]);
         $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
         $base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
@@ -175,10 +175,10 @@
     function algoritm($alg){
         $supported_algs = array(
             'ES256' => array('openssl', 'SHA256'),
-            'RS256' => array('hash_hmac', 'SHA256'),
+            'HS256' => array('hash_hmac', 'SHA256'),
             'HS384' => array('hash_hmac', 'SHA384'),
             'HS512' => array('hash_hmac', 'SHA512'),
-            'HS256' => array('openssl', 'SHA256'),
+            'RS256' => array('openssl', 'SHA256'),
             'RS384' => array('openssl', 'SHA384'),
             'RS512' => array('openssl', 'SHA512'),
         );  
@@ -193,7 +193,7 @@
         return str_replace(['-_', ''],['+/',  '='], base64_decode($input));
     }
     
-    function signnature($msg, $key, $alg = 'RS256'){
+    function signnature($msg, $key, $alg = 'HS256'){
         list($function, $algorithm)=algoritm($alg);
         switch ($function) {
             case 'hash_hmac':
@@ -226,8 +226,8 @@
         }
     }
 
-    function encode_jwt($payload,$key,$alg = 'RS256'){
-        $header = json_encode(['alg' => $alg,'typ' => 'JWT']);
+    function encode_jwt($payload,$key,$alg = 'HS256'){
+        $header = json_encode(['typ' => 'JWT', 'alg' => $alg]);
         $payload = json_encode($payload);
         $segments = array();
         $segments[] = urlsafeB64Encode($header);
@@ -306,7 +306,7 @@
     
     function cektoken($token){
         try{
-            if (decode_jwt($token,privateKey(),['typ' => 'JWT', 'alg' => 'RS256'])) {
+            if (decode_jwt($token,privateKey(),['typ' => 'JWT', 'alg' => 'HS256'])) {
                 $response =TRUE;
                 return $response;
             } 
@@ -329,31 +329,15 @@
     }
 
     function payloadtoken(){
-        $data_array[] = array(
-            'name' => 'role_admin',
-            'permissions' => []
-        );
         $token = array(
-            "aud" => array(
-                "USER_CLIENT_RESOURCE",
-                "USER_ADMIN_RESOURCE"
-            ),
-            'role' => (
-                $data_array
-            ),
-            "user_name" => USERNAME,
-            "scope" => array(
-                "role_admin"
-            ),
+            "iss" => "Khanza REST API", //Pembuat Token
+            "aud" => "Client Khanza REST API", //Penrima Token
             "iat" => time(), //time create Token
             "exp" => 899, //5 menit {second time} 
-            "authorities" => array(
-                "role_admin"
-            ),
-            'jti' => generate_uuid(),
-            'email' => 'mhas@mandiri.co.id',
-            'client_id' => getOne2("select aes_decrypt(set_akun_mandiri.client_id,'nur') from set_akun_mandiri"),
-            "username" => USERNAME
+            "data" => array( 
+                "username" => USERNAME,
+                "password" => PASSWORD
+            )
         );
         return $token;
     }
@@ -399,15 +383,6 @@
         $save=str_replace("='","",$save);
         $save=str_replace("=/","",$save);
         $save=str_replace("=","",$save);
-        $save=str_replace("password","",$save);
-        $save=str_replace("submit","",$save);
-        $save=str_replace("input","",$save);
-        $save=str_replace("meta","",$save);
-        $save=str_replace("md5","",$save);
-        $save=str_replace("pass","",$save);
-        $save=str_replace("SESSION","",$save);
-        $save=str_replace("login_shell","",$save);
-        $save=str_replace("value","",$save);
         return $save;
     }
     
@@ -451,15 +426,6 @@
         $save=str_replace("='","",$save);
         $save=str_replace("=/","",$save);
         $save=str_replace("=","",$save);
-        $save=str_replace("password","",$save);
-        $save=str_replace("submit","",$save);
-        $save=str_replace("input","",$save);
-        $save=str_replace("meta","",$save);
-        $save=str_replace("md5","",$save);
-        $save=str_replace("pass","",$save);
-        $save=str_replace("SESSION","",$save);
-        $save=str_replace("login_shell","",$save);
-        $save=str_replace("value","",$save);
         return $save;
     }
     
@@ -518,15 +484,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }
@@ -575,15 +532,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }

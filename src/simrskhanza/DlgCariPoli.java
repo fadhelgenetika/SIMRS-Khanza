@@ -431,29 +431,17 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("poli");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("KodeUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeUnit").asText(),list.path("NamaUnit").asText(),list.path("RegistrasiBaru").asText(),list.path("RegistrasiLama").asText()
                         });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("KodeUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodeUnit").asText(),list.path("NamaUnit").asText(),list.path("RegistrasiBaru").asText(),list.path("RegistrasiLama").asText()
-                            });
-                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

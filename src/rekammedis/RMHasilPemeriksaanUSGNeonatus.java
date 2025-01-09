@@ -1017,12 +1017,20 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(VentrikalSinistra.getText().trim().equals("")){
-            Valid.textKosong(VentrikalSinistra,"Ventrikel Sinistra");
+            Valid.textKosong(VentrikalSinistra,"Ventrikal Sinistra");
         }else if(VentrikelDextra.getText().trim().equals("")){
             Valid.textKosong(VentrikelDextra,"Ventrikel Dextra");
+        }else if(Kesan.getText().trim().equals("")){
+            Valid.textKosong(Kesan,"Kesan");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Saran.getText().trim().equals("")){
+            Valid.textKosong(Saran,"Saran");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1088,12 +1096,20 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(VentrikalSinistra.getText().trim().equals("")){
-            Valid.textKosong(VentrikalSinistra,"Ventrikel Sinistra");
+            Valid.textKosong(VentrikalSinistra,"Ventrikal Sinistra");
         }else if(VentrikelDextra.getText().trim().equals("")){
             Valid.textKosong(VentrikelDextra,"Ventrikel Dextra");
+        }else if(Kesan.getText().trim().equals("")){
+            Valid.textKosong(Kesan,"Kesan");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Saran.getText().trim().equals("")){
+            Valid.textKosong(Saran,"Saran");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1662,10 +1678,10 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_usg_neonatus());
-        BtnHapus.setEnabled(akses.gethasil_usg_neonatus());
-        BtnEdit.setEnabled(akses.gethasil_usg_neonatus());
-        BtnEdit.setEnabled(akses.gethasil_usg_neonatus());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

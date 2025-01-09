@@ -217,7 +217,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         });
         panelisi3.add(TCari);
 
-        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search.png"))); // NOI18N
         BtnCari.setMnemonic('1');
         BtnCari.setToolTipText("Alt+1");
         BtnCari.setName("BtnCari"); // NOI18N
@@ -234,7 +234,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         });
         panelisi3.add(BtnCari);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/show_data.png"))); // NOI18N
         BtnAll.setMnemonic('2');
         BtnAll.setToolTipText("2Alt+2");
         BtnAll.setName("BtnAll"); // NOI18N
@@ -555,23 +555,13 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("penjab");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    i=1;
-                    for(JsonNode list:response){
+                i=1;
+                for(JsonNode list:response){
+                    if(list.path("KodeAsuransi").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaAsuransi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             i,list.path("KodeAsuransi").asText(),list.path("NamaAsuransi").asText(),list.path("PerusahaanAsuransi").asText(),list.path("AlamatAsuransi").asText(),list.path("NoTelp").asText(),list.path("Attn").asText()
                         });
                         i++;
-                    }
-                }else{
-                    i=1;
-                    for(JsonNode list:response){
-                        if(list.path("KodeAsuransi").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaAsuransi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i,list.path("KodeAsuransi").asText(),list.path("NamaAsuransi").asText(),list.path("PerusahaanAsuransi").asText(),list.path("AlamatAsuransi").asText(),list.path("NoTelp").asText(),list.path("Attn").asText()
-                            });
-                            i++;
-                        }
                     }
                 }
             }

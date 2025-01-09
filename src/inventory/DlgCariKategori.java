@@ -418,29 +418,17 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("kategoriobat");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("NamaKategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeKategori").asText(),list.path("NamaKategori").asText()
                         });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("NamaKategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodeKategori").asText(),list.path("NamaKategori").asText()
-                            });
-                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception e) {
-            if(e.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

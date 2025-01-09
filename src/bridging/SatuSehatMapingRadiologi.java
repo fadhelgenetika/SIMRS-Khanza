@@ -930,10 +930,10 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_radiologi());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnHapus.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnEdit.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnPrint.setEnabled(akses.getsatu_sehat_referensi_pasien());
     }
     
     public JTable getTable(){

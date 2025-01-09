@@ -71,7 +71,7 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
 
         Object[] rowRwJlDr={
             "No.","Tanggal & Jam","No.Lab","No.RM","Nama Pasien","L","P",
-            "Alamat","Kode","Diagnosa","Jenis Pemeriksaan","Dokter Perujuk/Pengirim","Asal Ruang"
+            "Alamat","Kode","Diagnosa","Jenis Pemeriksaan","Dokter Perujuk/Pengirim","Asal Ruang","SEP"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -81,7 +81,7 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -109,6 +109,8 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(180);
             }else if(i==12){
                 column.setPreferredWidth(130);
+            }else if(i==13){
+                column.setPreferredWidth(160);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -850,13 +852,13 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
                         tabMode.getValueAt(r,9).toString()+"','"+
                         tabMode.getValueAt(r,10).toString()+"','"+
                         tabMode.getValueAt(r,11).toString()+"','"+
-                        tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
+                        tabMode.getValueAt(r,12).toString()+"','"+tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
                     );
                 } catch (Exception e) {
                 }
             }
                
-            Valid.MyReportqry("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1273,10 +1275,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tindakan = tindakan.substring(0,tindakan.length() - 1);
                     }
                     
+                    String SEP = Sequel.cariIsi("SELECT no_sep FROM bridging_sep WHERE no_rawat='"+rs.getString("no_rawat")+"' AND jnspelayanan='1'");
                     tabMode.addRow(new Object[]{
                         i,rs.getString("tgl_periksa")+" "+rs.getString("jam"),no_lab,rs.getString("no_rkm_medis"),
                         rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiangnosa,diagnosa,
-                        tindakan,rs.getString("nm_dokter"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal")
+                        tindakan,rs.getString("nm_dokter"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),SEP
                     });                
                     i++;
                 }

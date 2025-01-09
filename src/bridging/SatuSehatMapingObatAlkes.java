@@ -1177,10 +1177,10 @@ public final class SatuSehatMapingObatAlkes extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_obat());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_obat());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_obat());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_obat());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnHapus.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnEdit.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnPrint.setEnabled(akses.getsatu_sehat_referensi_pasien());
     }
     
     public JTable getTable(){

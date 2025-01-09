@@ -177,7 +177,7 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
         });
         panelisi3.add(TCari);
 
-        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search.png"))); // NOI18N
         BtnCari.setMnemonic('1');
         BtnCari.setToolTipText("Alt+1");
         BtnCari.setName("BtnCari"); // NOI18N
@@ -194,7 +194,7 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
         });
         panelisi3.add(BtnCari);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/show_data.png"))); // NOI18N
         BtnAll.setMnemonic('2');
         BtnAll.setToolTipText("2Alt+2");
         BtnAll.setName("BtnAll"); // NOI18N
@@ -428,29 +428,17 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("cacatfisik");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("Cacat").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("ID").asText(),list.path("Cacat").asText()
                         });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("Cacat").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("ID").asText(),list.path("Cacat").asText()
-                            });
-                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

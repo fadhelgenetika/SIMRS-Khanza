@@ -2,20 +2,22 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>KhanzaHMS</comment> 
-    <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASE">AZHNccBwSmSho84f+X8GyQ==</entry>
+    <entry key="HOST">tC7Y7MjgJqhhXgD5w4Eltw==</entry>
+    <entry key="DATABASE">GSIcNLkvgOcYHnGkry7GCw==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
-    <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
-    <entry key="PAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CARICEPAT">nonaktif</entry>
-    <entry key="HOSTHYBRIDWEB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="USER">s/tonfR4UPmVb7cSVMOEIw==</entry>
+    <entry key="PAS">0PDj322/X9ElKE46aKAvIg==</entry>
+    <entry key="CARICEPAT">aktif</entry>
+    <entry key="HOSTHYBRIDWEB">tC7Y7MjgJqhhXgD5w4Eltw==</entry>
     <entry key="USERHYBRIDWEB">nmXqCKzrz9i8GTZlq7JruQ==</entry>
     <entry key="PASHYBRIDWEB">AsJ/0/gCnYnD+gK4fw9uKA==</entry>
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="PORTWEB">80</entry>
+    <entry key="AKTIFKANWARNARALAN">yes</entry>
     <entry key="ANTRIAN">player</entry>
     <entry key="LOKETANTRIAN">1</entry>
     <entry key="ALARMAPOTEK">yes</entry>
+    <entry key="RESEPRAJALKEPLAN">yes</entry>
     <entry key="FORMALARMAPOTEK">ralan + ranap</entry>
     <entry key="STOKKOSONGRESEP">no</entry>
     <entry key="HPPFARMASI">dasar</entry>
@@ -28,23 +30,34 @@
     <entry key="ALARMBOOKINGPERIKSA">yes</entry>
     <entry key="ALARMPENGADUANPASIEN">yes</entry>
     <entry key="ALARMPERMINTAANRANAP">yes</entry>
-    <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">https://apijkn.bpjs-kesehatan.go.id/vclaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="USERKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="MENUTRANSPARAN">no</entry>
+    <entry key="URLAPIBPJS">https://apijkn.bpjs-kesehatan.go.id/vclaim-rest/</entry>
+    <entry key="SECRETKEYAPIBPJS">00GkX8RL+6pteSYIkoQPXQ==</entry>
+    <entry key="CONSIDAPIBPJS">C56tAJBUQVNZUb0tiNPIGQ==</entry>
+    <entry key="USERKEYAPIBPJS">n56OR3/MldhNmq8K44qaXdO0H/5iqiAhyQjx/YSUG9RCXpcTBRlwh4PvzsYqaOQl</entry>
+    <entry key="DIAGNOSARUJUKANMASUKAPIBPJS">yes</entry>
+    <entry key="JADIKANBOOKINGSURATKONTROLAPIBPJS">yes</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
-    <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="SECRETKEYAPIAPLICARE">00GkX8RL+6pteSYIkoQPXQ==</entry>
+    <entry key="CONSIDAPIAPLICARE">C56tAJBUQVNZUb0tiNPIGQ==</entry>
     <entry key="USERKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPIMOBILEJKN">https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev</entry>
-    <entry key="SECRETKEYAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="USERKEYAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPIMOBILEJKN">https://new-apijkn.bpjs-kesehatan.go.id/antreanrs</entry>
+    <entry key="SECRETKEYAPIMOBILEJKN">00GkX8RL+6pteSYIkoQPXQ==</entry>
+    <entry key="CONSIDAPIMOBILEJKN">C56tAJBUQVNZUb0tiNPIGQ==</entry>
+    <entry key="USERKEYAPIMOBILEJKN">8IV5Fh2E9K6LIFALSZKjF232cqwrvvzEUW4cbhyV6rgFRAxCFbzzdo5kGjnEtarY</entry>
+    <entry key="ADDANTRIANAPIMOBILEJKN">yes</entry>
     <entry key="URLAPIAPOTEKBPJS">https://dev-soa.bpjs-kesehatan.go.id/apotek-rest</entry>
     <entry key="SECRETKEYAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="USERKEYAPIAPOTEKBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPIICARE">https://apijkn-dev.bpjs-kesehatan.go.id/ihs_dev/api/rs</entry>
+    <entry key="SECRETKEYAPIICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPIICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="USERKEYAPIICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPISMARTCLAIM">https://dvlp.bpjs-kesehatan.go.id/eRekamMedis</entry>
+    <entry key="SECRETKEYAPISMARTCLAIM">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPISMARTCLAIM">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="USERKEYAPISMARTCLAIM">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIPCARE">https://apijkn-dev.bpjs-kesehatan.go.id/pcare-rest-dev</entry>
     <entry key="SECRETKEYAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -56,9 +69,9 @@
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
     <entry key="IDSISRUTE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSSISRUTE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
-    <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
-    <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
+    <entry key="URLAPISIRS">https://sirs.kemkes.go.id/fo/index.php/Fasyankes</entry>
+    <entry key="IDSIRS">jhPSu1xlQkh+stLFrcin5w==</entry>
+    <entry key="PASSSIRS">BYptJvsq544HinWKjX8VTA==</entry>
     <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitbtraining/sitb/senddata</entry>
     <entry key="IDSITT">Fm2U09DVwzqY2V8sl5jUCA==</entry>
     <entry key="PASSSITT">ri7lfclUM11skv5F+NuUUg==</entry>
@@ -66,6 +79,16 @@
     <entry key="URLAPICORONA">http://sirs.kemkes.go.id/fo/index.php</entry>
     <entry key="IDCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CLIENTIDSATUSEHAT">84gc+gN5BhcCxLoJxHODBleZUdYHZiR2pYAb9T/w6hhyuWrFJFvPM7UvdNVtl7Sestw5ZVpC9SI/UUmSqSmYsA==</entry>
+    <entry key="SECRETKEYSATUSEHAT">ukhrihQzC2cCqQ+DQy7T+wkKxe2YFfvnv1vQr/eAycsbJOiU0j6eeo7CFJE6D/WlEcwqwFE15TGfO5qcMTm+wclfWqpiscCeYZA9pZ/+44o=</entry>
+    <entry key="URLAUTHSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/oauth2/v1</entry> 
+    <entry key="URLFHIRSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/fhir-r4/v1</entry>
+    <entry key="IDSATUSEHAT">Z64Bi97zYtxq3TuJDUb/ng==</entry>
+    <entry key="KELURAHANSATUSEHAT">3313160009</entry>
+    <entry key="KECAMATANSATUSEHAT">3313160</entry>
+    <entry key="KABUPATENSATUSEHAT">3313</entry>
+    <entry key="PROPINSISATUSEHAT">33</entry>
+    <entry key="KODEPOSSATUSEHAT">57752</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
     <entry key="POLIAKTIFKASIRRALAN"></entry>
@@ -91,7 +114,7 @@
     <entry key="USERDUKCAPIL">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSDUKCAPIL">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
-    <entry key="AKTIFKANTRACKSQL">cj8o6eBdSn+TiUrBgGoElQ==</entry>
+    <entry key="AKTIFKANTRACKSQL">88tE0ZUstuza/UrtfBYkFA==</entry>
     <entry key="HOSTWSLICA">http://localhost/bridging-lica/public</entry>
     <entry key="KEYWSLICA">yLT3/8b0KAb5QK1ueFkW7g==</entry>
     <entry key="HOSTFUJI">5k7+C7EnUw9nUv2Nix+DBA==</entry>
@@ -100,11 +123,11 @@
     <entry key="USERFUJI">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PASFUJI">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLCARESTREAM">http://192.168.55.187:10110/pacs</entry>
-    <entry key="HOSTSYSMEX">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASESYSMEX">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
+    <entry key="HOSTSYSMEX">90TW6jT9SrJH+YQ4BNxQsA==</entry>
+    <entry key="DATABASESYSMEX">8UHANFJDm39Rg2eb8bw6wA==</entry>
     <entry key="PORTSYSMEX">nioxtijcpDaKSUiUiP5FAg==</entry>
-    <entry key="USERSYSMEX">kMR3WfAwUK6MbhCyydxa0g==</entry>
-    <entry key="PASSYSMEX">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="USERSYSMEX">3Z1PAxfBNM1Bd/3PxXAbcw==</entry>
+    <entry key="PASSYSMEX">PQO340VAnrfsiSEsfuuhJA==</entry>
     <entry key="HOSTELIMS">5k7+C7EnUw9nUv2Nix+DBA==</entry>
     <entry key="DATABASEELIMS">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
     <entry key="PORTELIMS">nioxtijcpDaKSUiUiP5FAg==</entry>
@@ -123,4 +146,13 @@
     <entry key="VERSIONSOFTMEDIX">NtswCF8BeY91Qs+C0p9G4g==</entry>
     <entry key="USERIDSOFTMEDIX">ZrktPIaFtldPd5VRZVti1g==</entry>
     <entry key="KEYSOFTMEDIX">KAkCm0yrGiE2y7VnPrI2RcLCEN+iP1sFTpvFpySD1f8=</entry>
+    <entry key="HOSTVANSLAB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASEVANSLAB">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
+    <entry key="PORTVANSLAB">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERVANSLAB">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASVANSLAB">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLORTHANC">http://192.168.50.100</entry>
+    <entry key="PORTORTHANC">gie5pRePkRsFe+dOh84P4A==</entry>
+    <entry key="USERORTHANC">V9bi0P2HgAq8Nn8lUyS6/A==</entry>
+    <entry key="PASSORTHANC">V9bi0P2HgAq8Nn8lUyS6/A==</entry>
 </properties>

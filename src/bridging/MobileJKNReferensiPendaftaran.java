@@ -10,6 +10,8 @@
  */
 
 package bridging;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -29,6 +31,10 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 
 /**
  *
@@ -42,6 +48,16 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
+    
+    private String utc="",requestJson,URL="";
+    private HttpHeaders headers;
+    private ApiBPJS api=new ApiBPJS();
+    private ApiMobileJKN apiMobileJKN=new ApiMobileJKN();
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent
@@ -494,12 +510,97 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckinActionPerformed
+        //OLD
         if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin',validasi=now()",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
         })==true){
             Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
             tampil();
         }
+
+        //Dari Irfan
+//        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin',validasi=now()",1,new String[]{
+//            tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
+//        })==true){
+//            try{
+//                ps=koneksi.prepareStatement(
+//                    "SELECT referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
+//                    "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
+//                    "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,"+
+//                    "referensi_mobilejkn_bpjs.kodepoli,referensi_mobilejkn_bpjs.pasienbaru,referensi_mobilejkn_bpjs.kodedokter,referensi_mobilejkn_bpjs.jampraktek,"+
+//                    "referensi_mobilejkn_bpjs.nomorantrean,referensi_mobilejkn_bpjs.angkaantrean,referensi_mobilejkn_bpjs.estimasidilayani,referensi_mobilejkn_bpjs.sisakuotajkn,"+
+//                    "referensi_mobilejkn_bpjs.kuotajkn,referensi_mobilejkn_bpjs.sisakuotanonjkn,referensi_mobilejkn_bpjs.kuotanonjkn "+
+//                    "FROM referensi_mobilejkn_bpjs INNER JOIN reg_periksa ON referensi_mobilejkn_bpjs.no_rawat=reg_periksa.no_rawat "+
+//                    "INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+//                    "INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli "+
+//                    "INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter "+
+//                    "WHERE referensi_mobilejkn_bpjs.statuskirim='Belum' and referensi_mobilejkn_bpjs.no_rawat='"+tbJnsPerawatan.getSelectedRow()+"'"+
+//                    "order by referensi_mobilejkn_bpjs.tanggalperiksa desc");
+//                try {
+//                    rs=ps.executeQuery();
+//                    while(rs.next()){
+//                        try {     
+//                            headers = new HttpHeaders();
+//                            headers.setContentType(MediaType.APPLICATION_JSON);
+//                            headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
+//                            utc=String.valueOf(api.GetUTCdatetimeAsString());
+//                            headers.add("x-timestamp",utc);
+//                            headers.add("x-signature",api.getHmac(utc));
+//                            headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
+//                            requestJson ="{" +
+//                                            "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+//                                            "\"jenispasien\": \"JKN\"," +
+//                                            "\"nomorkartu\": \""+rs.getString("nomorkartu")+"\"," +
+//                                            "\"nik\": \""+rs.getString("nik")+"\"," +
+//                                            "\"nohp\": \""+rs.getString("nohp")+"\"," +
+//                                            "\"kodepoli\": \""+rs.getString("kodepoli")+"\"," +
+//                                            "\"namapoli\": \""+rs.getString("nm_poli")+"\"," +
+//                                            "\"pasienbaru\": "+rs.getString("pasienbaru")+"," +
+//                                            "\"norm\": \""+rs.getString("no_rkm_medis")+"\"," +
+//                                            "\"tanggalperiksa\": \""+rs.getString("tanggalperiksa")+"\"," +
+//                                            "\"kodedokter\": "+rs.getString("kodedokter")+"," +
+//                                            "\"namadokter\": \""+rs.getString("nm_dokter")+"\"," +
+//                                            "\"jampraktek\": \""+rs.getString("jampraktek")+"\"," +
+//                                            "\"jeniskunjungan\": "+rs.getString("jeniskunjungan").substring(0,1)+"," +
+//                                            "\"nomorreferensi\": \""+rs.getString("nomorreferensi")+"\"," +
+//                                            "\"nomorantrean\": \""+rs.getString("nomorantrean")+"\"," +
+//                                            "\"angkaantrean\": "+Integer.parseInt(rs.getString("angkaantrean"))+"," +
+//                                            "\"estimasidilayani\": "+rs.getString("estimasidilayani")+"," +
+//                                            "\"sisakuotajkn\": "+rs.getString("sisakuotajkn")+"," +
+//                                            "\"kuotajkn\": "+rs.getString("kuotajkn")+"," +
+//                                            "\"sisakuotanonjkn\": "+rs.getString("sisakuotanonjkn")+"," +
+//                                            "\"kuotanonjkn\": "+rs.getString("kuotanonjkn")+"," +
+//                                            "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\"" +
+//                                        "}";
+//                            System.out.println("JSON : "+requestJson+"\n");
+//                            requestEntity = new HttpEntity(requestJson,headers);
+//                            URL = koneksiDB.URLAPIMOBILEJKN()+"/antrean/add";	
+//                            System.out.println("URL : "+URL);
+//                            root = mapper.readTree(apiMobileJKN.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+//                            nameNode = root.path("metadata");
+//                            if(nameNode.path("code").asText().equals("200")){
+//                                Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
+//                                Sequel.queryu("update referensi_mobilejkn_bpjs set statuskirim='Sudah' where no_rawat='"+tbJnsPerawatan.getSelectedRow()+"'");
+//                            }
+//                            System.out.println("respon WS BPJS Kirim Referensi JKN : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
+//                        }catch (Exception ex) {
+//                            System.out.println("Notifikasi Bridging : "+ex);
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println("Notif : "+e);
+//                } finally{
+//                    if(rs!=null){
+//                        rs.close();
+//                    }
+//                    if(ps!=null){
+//                        ps.close();
+//                    }
+//                }
+//            }catch(Exception e){
+//                System.out.println("Notifikasi : "+e);
+//            }
+//        } //END Dari Irfan
     }//GEN-LAST:event_BtnCheckinActionPerformed
 
     private void BtnCheckinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCheckinKeyPressed

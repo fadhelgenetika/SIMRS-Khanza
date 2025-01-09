@@ -931,9 +931,8 @@ public final class SatuSehatKirimObservationLabPK extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_observation_lab());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_observation_lab());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_observation_lab());
+        BtnKirim.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnPrint.setEnabled(akses.getsatu_sehat_referensi_pasien());
     }
     
     public JTable getTable(){

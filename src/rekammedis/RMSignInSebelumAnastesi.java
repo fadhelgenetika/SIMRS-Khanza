@@ -133,8 +133,8 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+//        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
+//        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
         Alergi.setDocument(new batasInput((byte)30).getKata(Alergi));
         AntisipasiResikoAspirasi.setDocument(new batasInput((byte)50).getKata(AntisipasiResikoAspirasi));
         JalurIVLine.setDocument(new batasInput((byte)30).getKata(JalurIVLine));

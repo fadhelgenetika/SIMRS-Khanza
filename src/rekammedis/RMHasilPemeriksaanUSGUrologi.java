@@ -963,12 +963,18 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(GinjalKanan.getText().trim().equals("")){
             Valid.textKosong(GinjalKanan,"Ginjal Kanan");
         }else if(GinjalKiri.getText().trim().equals("")){
             Valid.textKosong(GinjalKiri,"Ginjal Kiri");
+        }else if(Vesica.getText().trim().equals("")){
+            Valid.textKosong(Vesica,"Vesica Urinaria");
+        }else if(Tambahan.getText().trim().equals("")){
+            Valid.textKosong(Tambahan,"Tambahan");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1033,12 +1039,18 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(GinjalKanan.getText().trim().equals("")){
             Valid.textKosong(GinjalKanan,"Ginjal Kanan");
         }else if(GinjalKiri.getText().trim().equals("")){
             Valid.textKosong(GinjalKiri,"Ginjal Kiri");
+        }else if(Vesica.getText().trim().equals("")){
+            Valid.textKosong(Vesica,"Vesica Urinaria");
+        }else if(Tambahan.getText().trim().equals("")){
+            Valid.textKosong(Tambahan,"Tambahan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1592,10 +1604,10 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_usg_urologi());
-        BtnHapus.setEnabled(akses.gethasil_usg_urologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

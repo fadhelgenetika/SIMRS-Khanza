@@ -73,7 +73,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"No.","Lama","Baru","Nama Pasien","L","P","Alamat","Kode","Diagnosa","Dokter Jaga"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"No.","Lama","Baru","Nama Pasien","L","P","Alamat","Kode","Diagnosa","Dokter Jaga","SEP"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         table1.setModel(tabMode);
@@ -81,7 +81,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         table1.setPreferredScrollableViewportSize(new Dimension(500,500));
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = table1.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -103,11 +103,13 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==9){
                 column.setPreferredWidth(200);
+            }else if(i==10){
+                column.setPreferredWidth(160);
             }
         }
         table1.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode2=new DefaultTableModel(null,new Object[]{"No.","Lama","Baru","Nama Pasien","L","P","Alamat","Kode","Diagnosa","Dokter Jaga"}){
+        tabMode2=new DefaultTableModel(null,new Object[]{"No.","Lama","Baru","Nama Pasien","L","P","Alamat","Kode","Diagnosa","Dokter Jaga","SEP"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         table2.setModel(tabMode2);
@@ -115,7 +117,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         table2.setPreferredScrollableViewportSize(new Dimension(500,500));
         table2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = table2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -137,6 +139,8 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==9){
                 column.setPreferredWidth(200);
+            }else if(i==10){
+                column.setPreferredWidth(160);
             }
         }
         table2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -708,6 +712,11 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         kddokter.setEditable(false);
         kddokter.setName("kddokter"); // NOI18N
         kddokter.setPreferredSize(new java.awt.Dimension(75, 23));
+        kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kddokterKeyPressed(evt);
+            }
+        });
         FormInput.add(kddokter);
         kddokter.setBounds(78, 40, 85, 23);
 
@@ -908,6 +917,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baru</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SEP</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P</b></td>"+
@@ -924,6 +934,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,1)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,4)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,5)+"</td>"+
@@ -941,6 +952,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode2.getValueAt(i,0)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,1)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top'>"+tabMode2.getValueAt(i,3)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,4)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,5)+"</td>"+
@@ -985,6 +997,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baru</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SEP</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P</b></td>"+
@@ -1001,6 +1014,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,1)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,4)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,5)+"</td>"+
@@ -1018,6 +1032,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode2.getValueAt(i,0)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,1)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top'>"+tabMode2.getValueAt(i,3)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,4)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode2.getValueAt(i,5)+"</td>"+
@@ -1057,18 +1072,18 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                 case "Laporan 3 (CSV)":
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
-                            "\"No.\";\"Lama\";\"Baru\";\"Nama Pasien\";\"L\";\"P\";\"Alamat\";\"Kode\";\"Diagnosa\";\"Dokter Jaga\"\n"
+                            "\"No.\";\"Lama\";\"Baru\";\"SEP\";\"Nama Pasien\";\"L\";\"P\";\"Alamat\";\"Kode\";\"Diagnosa\";\"Dokter Jaga\"\n"
                         ); 
                         if(TabRawat.getSelectedIndex()==0){
                             for(i=0;i<tabMode.getRowCount();i++){  
                                 htmlContent.append(                             
-                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\"\n"
+                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\"\n"
                                 ); 
                             } 
                         }else{
                             for(i=0;i<tabMode2.getRowCount();i++){  
                                 htmlContent.append(                             
-                                    "\""+tabMode2.getValueAt(i,0)+"\";\""+tabMode2.getValueAt(i,1)+"\";\""+tabMode2.getValueAt(i,2)+"\";\""+tabMode2.getValueAt(i,3)+"\";\""+tabMode2.getValueAt(i,4)+"\";\""+tabMode2.getValueAt(i,5)+"\";\""+tabMode2.getValueAt(i,6)+"\";\""+tabMode2.getValueAt(i,7)+"\";\""+tabMode2.getValueAt(i,8)+"\";\""+tabMode2.getValueAt(i,9)+"\"\n"
+                                    "\""+tabMode2.getValueAt(i,0)+"\";\""+tabMode2.getValueAt(i,1)+"\";\""+tabMode2.getValueAt(i,2)+"\";\""+tabMode2.getValueAt(i,10)+"\";\""+tabMode2.getValueAt(i,3)+"\";\""+tabMode2.getValueAt(i,4)+"\";\""+tabMode2.getValueAt(i,5)+"\";\""+tabMode2.getValueAt(i,6)+"\";\""+tabMode2.getValueAt(i,7)+"\";\""+tabMode2.getValueAt(i,8)+"\";\""+tabMode2.getValueAt(i,9)+"\"\n"
                                 ); 
                             } 
                         }         
@@ -1110,7 +1125,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                                         tabMode.getValueAt(r,6).toString()+"','"+
                                                         tabMode.getValueAt(r,7).toString()+"','"+
                                                         tabMode.getValueAt(r,8).toString()+"','"+
-                                                        tabMode.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                                        tabMode.getValueAt(r,9).toString()+"','"+tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                                     }                    
                                 }
                                 Valid.MyReportqry("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
@@ -1132,7 +1147,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                                         tabMode2.getValueAt(r,6).toString()+"','"+
                                                         tabMode2.getValueAt(r,7).toString()+"','"+
                                                         tabMode2.getValueAt(r,8).toString()+"','"+
-                                                        tabMode2.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                                                        tabMode2.getValueAt(r,9).toString()+"','"+tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                                     }                    
                                 }
                                 Valid.MyReportqry("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
@@ -1266,6 +1281,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSeek3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek3KeyPressed
         //Valid.pindah(evt,DTPCari2,TCari);
     }//GEN-LAST:event_BtnSeek3KeyPressed
+
+    private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         dokter.isCek();
@@ -1494,9 +1513,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }                        
+                    }
+                    
+                    String SEP = Sequel.cariIsi("SELECT no_sep FROM bridging_sep WHERE no_rawat='"+rs.getString("no_rawat")+"' AND jnspelayanan='2'");
                     tabMode.addRow(new Object[]{
-                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiangnosa,diagnosa,rs.getString("nm_dokter")
+                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiangnosa,diagnosa,rs.getString("nm_dokter"),SEP
                     });                
                     i++;
                 }
@@ -1614,9 +1635,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }                        
+                    }
+                    
+                    String SEP = Sequel.cariIsi("SELECT no_sep FROM bridging_sep WHERE no_rawat='"+rs.getString("no_rawat")+"' AND jnspelayanan='2'");
                     tabMode2.addRow(new Object[]{
-                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiangnosa,diagnosa,rs.getString("nm_dokter")
+                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiangnosa,diagnosa,rs.getString("nm_dokter"),SEP
                     });                
                     i++;
                 }

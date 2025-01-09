@@ -12,6 +12,7 @@
 package rekammedis;
 
 import fungsi.WarnaTable4;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
@@ -337,33 +338,70 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         if(Status.getSelectedIndex()==0){
             try{
-                ps=koneksi.prepareStatement(
+                
+                if(akses.getkode().equals("d0025") || akses.getkode().equals("d0026") || 
+                        akses.getkode().equals("d0027") || akses.getkode().equals("d0029") || 
+                        akses.getkode().equals("d0030") || akses.getkode().equals("d0132")){
+                    //Dokter Penyakit Dalam & Geriatri
+                    ps=koneksi.prepareStatement(
+                        "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,"+
+                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.rtl,pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi "+
+                        "from pemeriksaan_ralan inner join reg_periksa on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat where "+
+                        "reg_periksa.no_rkm_medis=? and "+
+                        "(pemeriksaan_ralan.keluhan like ? or pemeriksaan_ralan.pemeriksaan like ?) "+
+                        "order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 10");
+                    
+                    try{
+                        ps.setString(1,norm);
+                        ps.setString(2,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabMode.addRow(new String[] {
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                                rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                            });
+                        }
+                    }catch(Exception ex){
+                        System.out.println(ex);
+                    }finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } else {
+                    ps=koneksi.prepareStatement(
                         "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,"+
                         "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.rtl,pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi "+
                         "from pemeriksaan_ralan inner join reg_periksa on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat where "+
                         "reg_periksa.no_rkm_medis=? and pemeriksaan_ralan.nip=? and "+
                         "(pemeriksaan_ralan.keluhan like ? or pemeriksaan_ralan.pemeriksaan like ?) "+
                         "order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 5");
-                try{
-                    ps.setString(1,norm);
-                    ps.setString(2,nip);
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabMode.addRow(new String[] {
-                            rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
-                        });
-                    }
-                }catch(Exception ex){
-                    System.out.println(ex);
-                }finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
+                    
+                    try{
+                        ps.setString(1,norm);
+                        ps.setString(2,nip);
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            tabMode.addRow(new String[] {
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                                rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                            });
+                        }
+                    }catch(Exception ex){
+                        System.out.println(ex);
+                    }finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
                     }
                 }
             }catch(Exception e){

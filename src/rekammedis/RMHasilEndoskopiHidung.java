@@ -1185,6 +1185,12 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
+        }else if(LainlainKanan.getText().trim().equals("")){
+            Valid.textKosong(LainlainKanan,"Lain-lain Kanan");
+        }else if(LainlainKiri.getText().trim().equals("")){
+            Valid.textKosong(LainlainKiri,"Lain-lain Kiri");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1254,6 +1260,12 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
+        }else if(LainlainKanan.getText().trim().equals("")){
+            Valid.textKosong(LainlainKanan,"Lain-lain Kanan");
+        }else if(LainlainKiri.getText().trim().equals("")){
+            Valid.textKosong(LainlainKiri,"Lain-lain Kiri");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1933,10 +1945,10 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnHapus.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

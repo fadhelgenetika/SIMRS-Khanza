@@ -425,31 +425,18 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
             response = root.path("metoderacik");
             i=1;
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("NamaRacik").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             i+"",list.path("KodeRacik").asText(),list.path("NamaRacik").asText()
                         });
                         i++;
                     }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("NamaRacik").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+"",list.path("KodeRacik").asText(),list.path("NamaRacik").asText()
-                            });
-                            i++;
-                        }
-                    }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

@@ -31,7 +31,8 @@ asuhan_gizi.antropometri_tl,asuhan_gizi.antropometri_ulna,asuhan_gizi.antropomet
 asuhan_gizi.antropometri_tbperu,asuhan_gizi.antropometri_bbpertb,asuhan_gizi.antropometri_llaperu,asuhan_gizi.biokimia,
 asuhan_gizi.fisik_klinis,asuhan_gizi.alergi_telur,asuhan_gizi.alergi_susu_sapi,asuhan_gizi.alergi_kacang,asuhan_gizi.alergi_gluten,
 asuhan_gizi.alergi_udang,asuhan_gizi.alergi_ikan,asuhan_gizi.alergi_hazelnut,asuhan_gizi.pola_makan,asuhan_gizi.riwayat_personal,
-asuhan_gizi.diagnosis,asuhan_gizi.intervensi_gizi,asuhan_gizi.monitoring_evaluasi,asuhan_gizi.nip,petugas.nama 
+asuhan_gizi.diagnosis,asuhan_gizi.intervensi_gizi,asuhan_gizi.monitoring_evaluasi,asuhan_gizi.nip,petugas.nama, 
+(SELECT kamar_inap.diagnosa_awal from kamar_inap WHERE kamar_inap.no_rawat=asuhan_gizi.no_rawat limit 1) as diagnosa_awal 
 from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join asuhan_gizi on reg_periksa.no_rawat=asuhan_gizi.no_rawat
 inner join petugas on asuhan_gizi.nip=petugas.nip]]>
@@ -171,13 +172,16 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 		<property name="com.jaspersoft.studio.field.label" value="nama"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
 	</field>
+	<field name="diagnosa_awal" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="2" y="52" width="1866" height="23" uuid="d945437d-9a72-4cfc-b9d8-2f3f991c1972"/>
+				<reportElement x="0" y="58" width="1869" height="18" uuid="d945437d-9a72-4cfc-b9d8-2f3f991c1972">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -185,7 +189,9 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[DATA ASUHAN GIZI PASIEN]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="60" y="25" width="1809" height="14" uuid="a50fb6d5-f5cb-4c5a-bb16-6d8fc1e06ed3"/>
+				<reportElement x="60" y="28" width="1809" height="12" uuid="a50fb6d5-f5cb-4c5a-bb16-6d8fc1e06ed3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -193,7 +199,9 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="60" y="0" width="1809" height="17" uuid="d3a34fd2-f5fa-41bf-ac58-321ce829efdc"/>
+				<reportElement x="60" y="0" width="1809" height="16" uuid="d3a34fd2-f5fa-41bf-ac58-321ce829efdc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -201,7 +209,9 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="60" y="35" width="1809" height="14" uuid="6305e5e4-fc16-4271-aaf2-8ea7c3a0d3d7"/>
+				<reportElement x="60" y="40" width="1809" height="12" uuid="6305e5e4-fc16-4271-aaf2-8ea7c3a0d3d7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -209,13 +219,15 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="48" width="1869" height="1" uuid="f8347b83-55ce-48ca-a4e3-dee7bfb93ab9"/>
+				<reportElement x="0" y="53" width="1869" height="1" uuid="f8347b83-55ce-48ca-a4e3-dee7bfb93ab9"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="60" y="14" width="1809" height="14" uuid="883cb2a0-d53b-4b75-9155-b0eabd26a2eb"/>
+				<reportElement x="60" y="16" width="1809" height="12" uuid="883cb2a0-d53b-4b75-9155-b0eabd26a2eb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -234,7 +246,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="1176" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f916916e-befc-4b66-9c7b-280cbecc3df3">
+				<reportElement mode="Opaque" x="1176" y="0" width="104" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f916916e-befc-4b66-9c7b-280cbecc3df3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -244,7 +256,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Pola Makan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1286" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="08e8d3a9-304c-4c93-a6c3-7bfb97d26a4a">
+				<reportElement mode="Opaque" x="1280" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="08e8d3a9-304c-4c93-a6c3-7bfb97d26a4a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -254,7 +266,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Riwayat Personal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1396" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e4f73ca1-6a8c-4bcd-81cd-8a868e6a1bd4">
+				<reportElement mode="Opaque" x="1380" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e4f73ca1-6a8c-4bcd-81cd-8a868e6a1bd4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -264,7 +276,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Diagnosis Gizi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1506" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="db1eae0d-d8c1-4893-8c10-716cf486ac2e">
+				<reportElement mode="Opaque" x="1480" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="db1eae0d-d8c1-4893-8c10-716cf486ac2e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -274,7 +286,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Intervensi Gizi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1616" y="0" width="110" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e883a9b5-99af-4f66-8de5-95e2b478a229">
+				<reportElement mode="Opaque" x="1580" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e883a9b5-99af-4f66-8de5-95e2b478a229">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -284,7 +296,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Monitoring & Evaluasi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1726" y="0" width="54" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="51cfe51f-7279-4445-a12d-51ab6724ea59">
+				<reportElement mode="Opaque" x="1680" y="0" width="54" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="51cfe51f-7279-4445-a12d-51ab6724ea59">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -294,7 +306,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[NIP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1780" y="0" width="89" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="655be4cd-b347-4d8a-90b5-f4243f85dca2">
+				<reportElement mode="Opaque" x="1734" y="0" width="76" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="655be4cd-b347-4d8a-90b5-f4243f85dca2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -562,17 +574,31 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="1869" height="1" uuid="1c710872-655f-44cc-8467-b07a609bac41"/>
+				<reportElement x="0" y="0" width="1870" height="1" uuid="1c710872-655f-44cc-8467-b07a609bac41">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="1869" height="1" uuid="3a86506c-46a0-4cdd-a162-94508500b4bc"/>
+				<reportElement x="0" y="16" width="1870" height="1" uuid="3a86506c-46a0-4cdd-a162-94508500b4bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1810" y="1" width="60" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9d46f725-4f95-4d85-a2a5-025122dc673a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosa Medis]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -602,9 +628,10 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="1869" height="1" uuid="9c00d9cc-4fdd-479d-8215-f0ec6ade1e3c">
+				<reportElement positionType="Float" x="0" y="11" width="1870" height="1" uuid="9c00d9cc-4fdd-479d-8215-f0ec6ade1e3c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
@@ -817,7 +844,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{alergi_hazelnut}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1176" y="0" width="110" height="10" uuid="090522bd-d154-4e2b-aabf-f3f4937f76c6"/>
+				<reportElement positionType="Float" x="1176" y="0" width="104" height="10" uuid="090522bd-d154-4e2b-aabf-f3f4937f76c6"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -825,7 +852,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{pola_makan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1287" y="0" width="108" height="10" uuid="f7572cba-7f76-4157-aef1-df42dea1c4e2"/>
+				<reportElement positionType="Float" x="1281" y="0" width="98" height="10" uuid="f7572cba-7f76-4157-aef1-df42dea1c4e2"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -833,7 +860,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{riwayat_personal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1396" y="0" width="109" height="10" uuid="a0822509-5d8e-49a2-a972-f49b38b49f29">
+				<reportElement positionType="Float" x="1380" y="0" width="99" height="10" uuid="a0822509-5d8e-49a2-a972-f49b38b49f29">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -843,7 +870,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{diagnosis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1506" y="0" width="109" height="10" uuid="821f6174-ce19-4956-ac8d-22b19e6ec181">
+				<reportElement positionType="Float" x="1480" y="0" width="99" height="10" uuid="821f6174-ce19-4956-ac8d-22b19e6ec181">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -853,7 +880,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{intervensi_gizi}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1616" y="0" width="109" height="10" uuid="9a6b518a-faa3-458e-b7fa-1a1380c58f59">
+				<reportElement positionType="Float" x="1580" y="0" width="99" height="10" uuid="9a6b518a-faa3-458e-b7fa-1a1380c58f59">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -863,7 +890,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{monitoring_evaluasi}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1726" y="0" width="53" height="10" uuid="13216ca3-178c-4ba0-8f47-ddf103325286">
+				<reportElement positionType="Float" x="1680" y="0" width="53" height="10" uuid="13216ca3-178c-4ba0-8f47-ddf103325286">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -873,7 +900,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{nip}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1780" y="0" width="88" height="10" uuid="08d8d77d-39a7-40d0-8148-13fba9e7ce1f">
+				<reportElement positionType="Float" x="1734" y="0" width="75" height="10" uuid="08d8d77d-39a7-40d0-8148-13fba9e7ce1f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -882,15 +909,25 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="1810" y="0" width="60" height="10" uuid="c3141465-5b10-46a8-9cad-f854ee563e2b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosa_awal}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="26" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="736" y="6" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="537b6f5f-71bf-4862-bf49-f3203b71b20b"/>
+				<reportElement key="textField" x="736" y="4" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="537b6f5f-71bf-4862-bf49-f3203b71b20b"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -904,7 +941,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="528" y="6" width="170" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="303bc28a-677a-4128-92c0-5a5f64ffa9c0"/>
+				<reportElement key="textField" x="528" y="4" width="170" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="303bc28a-677a-4128-92c0-5a5f64ffa9c0"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -918,7 +955,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="5" y="6" width="209" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="8c27d7d1-5d5c-44c2-91bc-9cfdbfb3791b"/>
+				<reportElement key="textField" x="5" y="4" width="209" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="8c27d7d1-5d5c-44c2-91bc-9cfdbfb3791b"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -932,13 +969,15 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="1869" height="1" uuid="871278f2-9581-4c59-827b-f8917ed8157f"/>
+				<reportElement x="0" y="0" width="1870" height="1" uuid="871278f2-9581-4c59-827b-f8917ed8157f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="1869" height="1" uuid="21f04975-cc56-4dcc-9ec8-a6fe5ec6f367"/>
+				<reportElement x="0" y="18" width="1869" height="1" uuid="21f04975-cc56-4dcc-9ec8-a6fe5ec6f367"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

@@ -51,7 +51,10 @@ import widget.ComboBox;
 import widget.Tanggal;
 import widget.TextArea;
 import java.io.File;
-import widget.TextBox;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 /**
  *
  * @author Owner
@@ -660,11 +663,51 @@ public final class validasi {
         try {
             try (Statement stm = connect.createStatement()) {
                 try {
-                    File f = new File("./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf")); 
+                    File f = new File("./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf"));
                     String namafile="./"+reportDirName+"/"+reportName;
                     JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     JasperExportManager.exportReportToPdfFile(jasperPrint,"./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf"));
                     Desktop.getDesktop().open(f);
+                } catch (Exception rptexcpt) {
+                    System.out.println("Report Can't view because : " + rptexcpt);
+                    JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    @SuppressWarnings("empty-statement")
+    public void MyReportPDFGen(String reportName,String reportDirName,String judul,String outFileName,String outDirName, Map parameters){
+        Properties systemProp = System.getProperties();
+
+        // Ambil current dir
+        String currentDir = systemProp.getProperty("user.dir");
+
+        File dir = new File(currentDir);
+
+        File fileRpt;
+        String fullPath = "";
+        if (dir.isDirectory()) {
+            String[] isiDir = dir.list();
+            for (String iDir : isiDir) {
+                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
+                    fullPath = fileRpt.toString();
+                    System.out.println("Found Report File at : " + fullPath);
+                } // end if
+            } // end for i
+        } // end if
+
+        try {
+            try (Statement stm = connect.createStatement()) {
+                try {
+                    File f = new File("./"+outDirName+"/"+outDirName.replaceAll("jasper","pdf").replaceAll("/", ""));
+                    String namafile="./"+reportDirName+"/"+reportName;
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
+                    JasperExportManager.exportReportToPdfFile(jasperPrint,"./"+outDirName+"/"+outFileName.replaceAll("jasper","pdf").replaceAll("/", ""));
+//                    Desktop.getDesktop().open(f);
                 } catch (Exception rptexcpt) {
                     System.out.println("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
@@ -869,14 +912,6 @@ public final class validasi {
         }
     }
     
-    public void pindah2(KeyEvent evt, Button kiri, Button kanan) {
-        if(evt.getKeyCode()==KeyEvent.VK_TAB){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
-        }
-    }
-    
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan){
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
@@ -988,22 +1023,6 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
-
-    public void pindah2(KeyEvent evt, TextArea kiri, Tanggal kanan) {
-        if(evt.getKeyCode()==KeyEvent.VK_TAB){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
-        }
-    }
-
-    public void pindah2(KeyEvent evt, Button kiri, TextBox kanan) {
-        if(evt.getKeyCode()==KeyEvent.VK_TAB){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
-        }
-    }
     
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1056,14 +1075,6 @@ public final class validasi {
     }
 
     public void pindah(java.awt.event.KeyEvent evt,JButton kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
-        }
-    }
-    
-    public void pindah(java.awt.event.KeyEvent evt,JButton kiri,JCheckBox kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1167,19 +1178,41 @@ public final class validasi {
         }
     }
     
+//    public void panggilUrl(String url){
+//        String os = System.getProperty("os.name").toLowerCase();
+//        Runtime rt = Runtime.getRuntime();                                
+//        try{ 
+//            if(os.contains("win")) {
+//                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "https://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
+//                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "https://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
+//            }else if (os.contains("mac")) {
+//                rt.exec( "open " + "https://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
+//            }else if (os.contains("nix") || os.contains("nux")) {
+//                String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
+//                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+//                StringBuilder cmd = new StringBuilder();
+//                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("https://").append(koneksiDB.HOSTHYBRIDWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/").append(url).append( "\" ");
+//                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+//            } 
+//        }catch (Exception e){
+//            System.out.println("Notif Browser : "+e);
+//        } 
+//    }
+    
     public void panggilUrl(String url){
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();                                
         try{ 
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("mac")) {
                 rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
-                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/").append(url).append( "\" ");
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } 
         }catch (Exception e){

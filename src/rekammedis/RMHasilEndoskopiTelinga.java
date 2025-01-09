@@ -1438,8 +1438,42 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KeteranganLiangKanan.getText().trim().equals("")){
+            Valid.textKosong(KeteranganLiangKanan,"Keterangan Liang Kanan");
+        }else if(KeteranganLiangKiri.getText().trim().equals("")){
+            Valid.textKosong(KeteranganLiangKiri,"Keterangan Liang Kiri");
+        }else if(KeteranganPerforasiKanan.getText().trim().equals("")){
+            Valid.textKosong(KeteranganPerforasiKanan,"Keterangan Perforasi Kanan");
+        }else if(KeteranganPerforasiKiri.getText().trim().equals("")){
+            Valid.textKosong(KeteranganPerforasiKiri,"Keterangan Perforasi Kiri");
+        }else if(MukosaKanan.getText().trim().equals("")){
+            Valid.textKosong(MukosaKanan,"Mukosa Kanan");
+        }else if(MukosaKiri.getText().trim().equals("")){
+            Valid.textKosong(MukosaKiri,"Mukosa Kiri");
+        }else if(OsikelKanan.getText().trim().equals("")){
+            Valid.textKosong(OsikelKanan,"Osikel Kanan");
+        }else if(OsikelKiri.getText().trim().equals("")){
+            Valid.textKosong(OsikelKiri,"Osikel Kiri");
+        }else if(IsthmusKanan.getText().trim().equals("")){
+            Valid.textKosong(IsthmusKanan,"Isthmus Kanan");
+        }else if(IsthmusKiri.getText().trim().equals("")){
+            Valid.textKosong(IsthmusKiri,"Isthmus Kiri");
+        }else if(AnteriorKanan.getText().trim().equals("")){
+            Valid.textKosong(AnteriorKanan,"Anterior Kanan");
+        }else if(AnteriorKiri.getText().trim().equals("")){
+            Valid.textKosong(AnteriorKiri,"Anterior Kiri");
+        }else if(PosteriorKanan.getText().trim().equals("")){
+            Valid.textKosong(PosteriorKanan,"Posterior Kanan");
+        }else if(PosteriorKiri.getText().trim().equals("")){
+            Valid.textKosong(PosteriorKiri,"Posterior Kiri");
+        }else if(LainlainKanan.getText().trim().equals("")){
+            Valid.textKosong(LainlainKanan,"Lain-lain Kanan");
+        }else if(LainlainKiri.getText().trim().equals("")){
+            Valid.textKosong(LainlainKiri,"Lain-lain Kiri");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else if(Anjuran.getText().trim().equals("")){
@@ -1509,8 +1543,42 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KeteranganLiangKanan.getText().trim().equals("")){
+            Valid.textKosong(KeteranganLiangKanan,"Keterangan Liang Kanan");
+        }else if(KeteranganLiangKiri.getText().trim().equals("")){
+            Valid.textKosong(KeteranganLiangKiri,"Keterangan Liang Kiri");
+        }else if(KeteranganPerforasiKanan.getText().trim().equals("")){
+            Valid.textKosong(KeteranganPerforasiKanan,"Keterangan Perforasi Kanan");
+        }else if(KeteranganPerforasiKiri.getText().trim().equals("")){
+            Valid.textKosong(KeteranganPerforasiKiri,"Keterangan Perforasi Kiri");
+        }else if(MukosaKanan.getText().trim().equals("")){
+            Valid.textKosong(MukosaKanan,"Mukosa Kanan");
+        }else if(MukosaKiri.getText().trim().equals("")){
+            Valid.textKosong(MukosaKiri,"Mukosa Kiri");
+        }else if(OsikelKanan.getText().trim().equals("")){
+            Valid.textKosong(OsikelKanan,"Osikel Kanan");
+        }else if(OsikelKiri.getText().trim().equals("")){
+            Valid.textKosong(OsikelKiri,"Osikel Kiri");
+        }else if(IsthmusKanan.getText().trim().equals("")){
+            Valid.textKosong(IsthmusKanan,"Isthmus Kanan");
+        }else if(IsthmusKiri.getText().trim().equals("")){
+            Valid.textKosong(IsthmusKiri,"Isthmus Kiri");
+        }else if(AnteriorKanan.getText().trim().equals("")){
+            Valid.textKosong(AnteriorKanan,"Anterior Kanan");
+        }else if(AnteriorKiri.getText().trim().equals("")){
+            Valid.textKosong(AnteriorKiri,"Anterior Kiri");
+        }else if(PosteriorKanan.getText().trim().equals("")){
+            Valid.textKosong(PosteriorKanan,"Posterior Kanan");
+        }else if(PosteriorKiri.getText().trim().equals("")){
+            Valid.textKosong(PosteriorKiri,"Posterior Kiri");
+        }else if(LainlainKanan.getText().trim().equals("")){
+            Valid.textKosong(LainlainKanan,"Lain-lain Kanan");
+        }else if(LainlainKiri.getText().trim().equals("")){
+            Valid.textKosong(LainlainKiri,"Lain-lain Kiri");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else if(Anjuran.getText().trim().equals("")){
@@ -2332,10 +2400,10 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_endoskopi_telinga());
-        BtnHapus.setEnabled(akses.gethasil_endoskopi_telinga());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_telinga());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_telinga());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_endoskopi_telinga());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

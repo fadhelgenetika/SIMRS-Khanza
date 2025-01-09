@@ -659,7 +659,6 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                         "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                     "}," +
                                     "\"occurrenceDateTime\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
-                                    "\"expirationDate\": \""+Sequel.cariIsi("SELECT data_batch.tgl_kadaluarsa FROM data_batch WHERE data_batch.no_batch='"+tbObat.getValueAt(i,19).toString()+"' and data_batch.kode_brng='"+tbObat.getValueAt(i,11).toString()+"' and data_batch.no_faktur='"+tbObat.getValueAt(i,28).toString()+"'")+"\"," +
                                     "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
@@ -711,7 +710,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "]," +
                                     "\"protocolApplied\" : ["+
                                         "{"+
-                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().replaceAll("[^0-9.]", "")+
+                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
                                         "}"+
                                     "]"+
                                 "}";
@@ -783,7 +782,6 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                         "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                     "}," +
                                     "\"occurrenceDateTime\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
-                                    "\"expirationDate\": \""+Sequel.cariIsi("SELECT data_batch.tgl_kadaluarsa FROM data_batch WHERE data_batch.no_batch='"+tbObat.getValueAt(i,19).toString()+"' and data_batch.kode_brng='"+tbObat.getValueAt(i,11).toString()+"' and data_batch.no_faktur='"+tbObat.getValueAt(i,28).toString()+"'")+"\"," +
                                     "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
@@ -835,7 +833,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "]," +
                                     "\"protocolApplied\" : ["+
                                         "{"+
-                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().replaceAll("[^0-9.]", "")+
+                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
                                         "}"+
                                     "]"+
                                 "}";
@@ -938,7 +936,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                    "where detail_pemberian_obat.no_batch<>'' and nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_vaksin.kode_brng like ? or satu_sehat_mapping_vaksin.vaksin_display like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)"));
+                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -997,7 +995,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                    "where detail_pemberian_obat.no_batch<>'' and nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_vaksin.kode_brng like ? or satu_sehat_mapping_vaksin.vaksin_display like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)"));
+                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -1040,7 +1038,6 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_Immunization());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_Immunization());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_Immunization());
     }
     

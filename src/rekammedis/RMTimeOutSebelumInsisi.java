@@ -148,8 +148,8 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+//        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
+//        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
         AntisipisasiKehialnganDarah.setDocument(new batasInput((byte)30).getKata(AntisipisasiKehialnganDarah));
         NamaAntibiotikDIberikan.setDocument(new batasInput((byte)50).getKata(NamaAntibiotikDIberikan));
         JamPemberianAntibiotik.setDocument(new batasInput((byte)10).getKata(JamPemberianAntibiotik));

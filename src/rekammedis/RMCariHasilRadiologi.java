@@ -12,6 +12,7 @@
 package rekammedis;
 
 import fungsi.WarnaTable;
+import fungsi.WarnaTable4;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
@@ -37,6 +38,8 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
     private ResultSet rs;
     private String norawat="";
     private int z=0;
+    
+    private int baris=0;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -61,10 +64,11 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
             }else if(z==1){
                 column.setPreferredWidth(50);
             }else if(z==2){
-                column.setPreferredWidth(750);
+                column.setPreferredWidth(1200);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tbKamar.setDefaultRenderer(Object.class, new WarnaTable4());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -330,6 +334,7 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
+        setBaris(0);
         try{
             ps=koneksi.prepareStatement(
                     "select hasil_radiologi.tgl_periksa,hasil_radiologi.jam,hasil_radiologi.hasil from hasil_radiologi "+
@@ -341,6 +346,9 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    if(getBaris()<countLines(rs.getString(3))){
+                        setBaris(countLines(rs.getString(3)));
+                    }
                     tabMode.addRow(new String[] {
                         rs.getString(1),rs.getString(2),rs.getString(3)
                     });
@@ -358,6 +366,7 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+        tbKamar.setRowHeight(15*getBaris());
         LCount.setText(""+tabMode.getRowCount());
     }
 
@@ -372,5 +381,17 @@ public final class RMCariHasilRadiologi extends javax.swing.JDialog {
     public JTable getTable(){
         return tbKamar;
     }
+
+    public int getBaris() {
+        return baris;
+    }
+
+    public void setBaris(int baris) {
+        this.baris = baris;
+    }
     
+    private static int countLines(String str){
+        String[] lines = str.split("\r\n|\r|\n");
+        return  lines.length;
+    }
 }

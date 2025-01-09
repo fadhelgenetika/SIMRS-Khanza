@@ -986,9 +986,8 @@ public final class SatuSehatKirimDiagnosticReportLabMB extends javax.swing.JDial
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
+        BtnKirim.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnPrint.setEnabled(akses.getsatu_sehat_referensi_pasien());
     }
     
     public JTable getTable(){

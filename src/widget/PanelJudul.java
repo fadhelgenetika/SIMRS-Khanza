@@ -28,7 +28,7 @@ public class PanelJudul extends JPanel{
 
     public PanelJudul() {
         super();
-        //this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(174,154,215)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(174,154,215)));
     }
 
     @Override

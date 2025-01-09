@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  * @author dosen
  */
 public class InternalFrame extends JPanel{
-    private static final long serialVersionUID = -1;
+//    private static final long serialVersionUID = -1;
     private BufferedImage gradientImage;
     //private Color warnaAtas = new Color(245,170,245) ;
     //private Color warnaBawah = new Color(245,170,245) ;
@@ -40,7 +40,7 @@ public class InternalFrame extends JPanel{
 
     public InternalFrame(LayoutManager layout) {
         super(layout);
-        addComponentListener(new GradientCacheManager());
+        addComponentListener(new GradientCacheManager() {});
     }
 
     public Color getWarnaAtas() {
@@ -156,7 +156,7 @@ public class InternalFrame extends JPanel{
         g2.dispose();
     }
 
-    private class GradientCacheManager implements ComponentListener {
+    private abstract class GradientCacheManager implements ComponentListener {
         @Override
         public void componentResized(ComponentEvent e) {
         }

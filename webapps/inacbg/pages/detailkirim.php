@@ -205,9 +205,7 @@
                                   echo "<option value='3'>Kelas Reguler</option>
                                         <option value='1'>Kelas Eksekutif</option>";                            
                               }else{
-                                  $kelas=getOne("select bridging_sep.klsrawat from bridging_sep where bridging_sep.no_rawat='$norawat'");
-                                  echo "<option value='$kelas'>Kelas $kelas</option>
-                                        <option value='1'>Kelas 1</option>
+                                  echo "<option value='1'>Kelas 1</option>
                                         <option value='2'>Kelas 2</option>
                                         <option value='3'>Kelas 3</option>";
                               }

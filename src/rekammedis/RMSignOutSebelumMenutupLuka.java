@@ -133,8 +133,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+//        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
+//        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
         PerhatianUtamaFasePemulihan.setDocument(new batasInput((byte)100).getKata(PerhatianUtamaFasePemulihan));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -1118,6 +1118,11 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
+                System.err.println(akses.getkode());
+                System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+                
                 if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
                     hapus();
                 }else{
@@ -1153,6 +1158,10 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
+                    System.err.println(akses.getkode());
+                    System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                    System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                    System.err.println(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
                     if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
                         ganti();
                     }else{

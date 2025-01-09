@@ -36,7 +36,7 @@
                 </tr>
                 <tr class="head">
                     <td width="31%" >Nama Departemen</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="25" pattern="[a-zA-Z0-9, ./@_]{1,25}" title=" a-zA-Z0-9, ./@_ (Maksimal 25 karakter)" autocomplete="off"/>
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="255" pattern="[a-zA-Z0-9, ./@_]{1,255}" title=" a-zA-Z0-9, ./@_ (Maksimal 255 karakter)" autocomplete="off"/>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

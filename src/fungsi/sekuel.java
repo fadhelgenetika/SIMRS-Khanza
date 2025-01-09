@@ -60,6 +60,7 @@ public final class sekuel {
     private Date tanggal=new Date();
     private boolean bool=false;
     private final DecimalFormat df2 = new DecimalFormat("####");
+    
     private SimpleDateFormat formattanggal = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date waktumulai,kegiatan;
     private long bedawaktu=0;
@@ -923,6 +924,8 @@ public final class sekuel {
         bool=true;
         try {
             ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+//            System.err.println("update "+table+" set "+update+" where "+acuan_field);
+            System.err.println(acuan_field);
             try{
                 for(angka=1;angka<=i;angka++){
                     ps.setString(angka,a[angka-1]);
@@ -933,38 +936,6 @@ public final class sekuel {
                 bool=false;
                 System.out.println("Notifikasi : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal Mengedit. Periksa kembali data...!!!!");
-             }finally{
-                if(ps != null){
-                    ps.close();
-                }
-            }
-            if(AKTIFKANTRACKSQL.equals("yes")){
-                dicari="";
-                for(angka=1;angka<=i;angka++){
-                    dicari=dicari+"|"+a[angka-1];
-                }
-            }
-            SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
-        } catch (Exception e) {
-            bool=false;
-            System.out.println("Notifikasi : "+e);
-        }   
-        return bool;
-    }
-    
-    public boolean mengedittf2(String table,String acuan_field,String update,int i,String[] a){
-        bool=true;
-        try {
-            ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
-            try{
-                for(angka=1;angka<=i;angka++){
-                    ps.setString(angka,a[angka-1]);
-                } 
-                ps.executeUpdate();       
-                bool=true;
-             }catch(Exception e){
-                bool=false;
-                System.out.println("Notifikasi : "+e);
              }finally{
                 if(ps != null){
                     ps.close();
@@ -1398,6 +1369,24 @@ public final class sekuel {
     
     public String ambiltanggalsekarang(){
         return formattanggal.format(new Date());
+    }
+    
+    public String potongAlamatLab(String teks){
+        String a="";
+        if(teks.length()>50){
+            a=teks.substring(0,49);
+            return a;
+        } else {
+            return teks;
+        }
+    }
+    
+    public String eleminasiKoma(String teks){
+        if(teks.contains("'")){
+            return teks.replace("'", "");
+        } else {
+            return teks;
+        }
     }
     
     public void cariIsi(String sql,JTextField txt,String kunci){
@@ -1980,7 +1969,7 @@ public final class sekuel {
             try {
                 ps=connect.prepareStatement("insert into trackersql values(now(),?,?)");
                 try{       
-                    ps.setString(1,akses.getalamatip()+" "+sql);
+                    ps.setString(1,sql);
                     ps.setString(2,akses.getkode());
                     ps.executeUpdate(); 
                  }catch(Exception e){
@@ -2128,5 +2117,4 @@ public final class sekuel {
             outFile.close();
         }
     }
-
 }

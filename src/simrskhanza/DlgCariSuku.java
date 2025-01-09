@@ -428,29 +428,17 @@ public final class DlgCariSuku extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("suku");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("Suku").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("ID").asText(),list.path("Suku").asText()
                         });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("Suku").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("ID").asText(),list.path("Suku").asText()
-                            });
-                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

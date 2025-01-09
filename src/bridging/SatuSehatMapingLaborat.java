@@ -929,10 +929,10 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_lab());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_lab());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_lab());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_lab());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnHapus.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnEdit.setEnabled(akses.getsatu_sehat_referensi_pasien());
+        BtnPrint.setEnabled(akses.getsatu_sehat_referensi_pasien());
     }
     
     public JTable getTable(){

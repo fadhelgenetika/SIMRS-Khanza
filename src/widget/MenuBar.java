@@ -24,19 +24,20 @@ public class MenuBar extends JMenuBar {
     private BufferedImage ligthImage;
     private final Color light = new Color(1F, 1F, 0.9F, 0.25F);
     private final Color dark = new Color(1F, 1F, 0.9F, 0.25F);
-    private final Color black = new Color(225,61,142);
-    private final Color warna = new Color(225,61,142);
+    //menu bar color
+    private final Color black = new Color(51,76,92);
+    private final Color warna = new Color(51,76,92);
 
     public MenuBar() {
         super();
-        setBorder(BorderFactory.createEmptyBorder(5, 6,6, 6));
+        setBorder(BorderFactory.createEmptyBorder(5, 6, 6, 6));
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         setUpGradientImage();
-        setUpLigthImage();
+//        setUpLigthImage();
         if (isOpaque()) {
             g.drawImage(gradientImage, 0, 0, getWidth(), getHeight(), null);
             g.drawImage(ligthImage, 0, 0, getWidth(), getHeight() / 2, null);
@@ -55,16 +56,16 @@ public class MenuBar extends JMenuBar {
         g.dispose();
     }
 
-    private void setUpLigthImage() {
-        ligthImage = new BufferedImage(1, getHeight() / 2, BufferedImage.TYPE_INT_ARGB);
-
-        GradientPaint paint = new GradientPaint(0, 0, light, 0, getHeight(), dark);
-
-        Graphics2D g = (Graphics2D) ligthImage.getGraphics();
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setPaint(paint);
-        g.fillRect(0, 0, 1, getHeight() / 2);
-        g.dispose();
-    }
+//    private void setUpLigthImage() {
+//        ligthImage = new BufferedImage(1, getHeight() / 2, BufferedImage.TYPE_INT_ARGB);
+//
+//        GradientPaint paint = new GradientPaint(0, 0, light, 0, getHeight(), dark);
+//
+//        Graphics2D g = (Graphics2D) ligthImage.getGraphics();
+//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        g.setPaint(paint);
+//        g.fillRect(0, 0, 1, getHeight() / 2);
+//        g.dispose();
+//    }
 
 }

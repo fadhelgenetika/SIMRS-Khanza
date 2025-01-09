@@ -390,7 +390,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Kebidanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Kandungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -636,7 +636,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024 07:18:51" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2024 15:18:23" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -966,7 +966,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -980,7 +980,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1178,10 +1178,34 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(HTA.getText().trim().equals("")){
             Valid.textKosong(HTA,"HTA");
+        }else if(JenisPrestasi.getText().trim().equals("")){
+            Valid.textKosong(JenisPrestasi,"Jenis Prestasi");
+        }else if(UkuranKantong.getText().trim().equals("")){
+            Valid.textKosong(UkuranKantong,"Ukuran Kantong Gestasi");
+        }else if(UkuranBokong.getText().trim().equals("")){
+            Valid.textKosong(UkuranBokong,"Ukuran Bokong-Kepala");
+        }else if(DiameterBiparietal.getText().trim().equals("")){
+            Valid.textKosong(DiameterBiparietal,"Diameter Biparietal");
+        }else if(PanjangFemur.getText().trim().equals("")){
+            Valid.textKosong(PanjangFemur,"Panjang Femur");
+        }else if(LingkarAbdomen.getText().trim().equals("")){
+            Valid.textKosong(LingkarAbdomen,"Lingkar Abdomen");
+        }else if(TafsiranBerat.getText().trim().equals("")){
+            Valid.textKosong(TafsiranBerat,"Tafsiran Berat");
+        }else if(UsiaKehamilan.getText().trim().equals("")){
+            Valid.textKosong(UsiaKehamilan,"Usia Kehamilan");
+        }else if(Plasenta.getText().trim().equals("")){
+            Valid.textKosong(Plasenta,"Plasenta Berimplatansi");
+        }else if(IndexCairan.getText().trim().equals("")){
+            Valid.textKosong(IndexCairan,"Index Cairan Ketuban");
+        }else if(Kelainan.getText().trim().equals("")){
+            Valid.textKosong(Kelainan,"Kelainan Kongenital Mayor");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1249,10 +1273,34 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(HTA.getText().trim().equals("")){
             Valid.textKosong(HTA,"HTA");
+        }else if(JenisPrestasi.getText().trim().equals("")){
+            Valid.textKosong(JenisPrestasi,"Jenis Prestasi");
+        }else if(UkuranKantong.getText().trim().equals("")){
+            Valid.textKosong(UkuranKantong,"Ukuran Kantong Gestasi");
+        }else if(UkuranBokong.getText().trim().equals("")){
+            Valid.textKosong(UkuranBokong,"Ukuran Bokong-Kepala");
+        }else if(DiameterBiparietal.getText().trim().equals("")){
+            Valid.textKosong(DiameterBiparietal,"Diameter Biparietal");
+        }else if(PanjangFemur.getText().trim().equals("")){
+            Valid.textKosong(PanjangFemur,"Panjang Femur");
+        }else if(LingkarAbdomen.getText().trim().equals("")){
+            Valid.textKosong(LingkarAbdomen,"Lingkar Abdomen");
+        }else if(TafsiranBerat.getText().trim().equals("")){
+            Valid.textKosong(TafsiranBerat,"Tafsiran Berat");
+        }else if(UsiaKehamilan.getText().trim().equals("")){
+            Valid.textKosong(UsiaKehamilan,"Usia Kehamilan");
+        }else if(Plasenta.getText().trim().equals("")){
+            Valid.textKosong(Plasenta,"Plasenta Berimplatansi");
+        }else if(IndexCairan.getText().trim().equals("")){
+            Valid.textKosong(IndexCairan,"Index Cairan Ketuban");
+        }else if(Kelainan.getText().trim().equals("")){
+            Valid.textKosong(Kelainan,"Kelainan Kongenital Mayor");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1943,7 +1991,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
         BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
         BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -2089,6 +2137,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     }
 
     private void simpan() {
+        System.err.println(PeluangSex.getSelectedItem().toString());
         if(Sequel.menyimpantf("hasil_pemeriksaan_usg","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",21,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
                 DiagnosaKlinis.getText(),KirimanDari.getText(),HTA.getText(),UkuranKantong.getText(),UkuranBokong.getText(),JenisPrestasi.getText(),

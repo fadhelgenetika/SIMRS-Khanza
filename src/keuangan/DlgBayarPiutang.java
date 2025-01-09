@@ -131,9 +131,9 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         NoRawat.setDocument(new batasInput((byte)17).getKata(NoRawat));
-        Cicilan.setDocument(new batasInput((byte)15).getOnlyAngka(Cicilan));
-        DiskonBayar.setDocument(new batasInput((byte)15).getOnlyAngka(DiskonBayar));
-        TidakTerbayar.setDocument(new batasInput((byte)15).getOnlyAngka(TidakTerbayar));
+        Cicilan.setDocument(new batasInput((byte)15).getKata(Cicilan));
+        DiskonBayar.setDocument(new batasInput((byte)15).getKata(DiskonBayar));
+        TidakTerbayar.setDocument(new batasInput((byte)15).getKata(TidakTerbayar));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         Kdmem.setDocument(new batasInput((byte)15).getKata(Kdmem));
         
@@ -1633,11 +1633,7 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampilAkunBayar();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
     } 
 }

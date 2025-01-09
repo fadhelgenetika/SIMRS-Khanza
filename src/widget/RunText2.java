@@ -44,7 +44,7 @@ public class RunText2 extends JPanel {
         int y = 1;
         while (y < 11) {
             //TM Sets Fonts
-            String fonts[] = {"Serif", "Monospaced", "Serif", "Bold", "Serif", "Italic","SansSerif", "Dialog", "DialogInput"};
+            String fonts[] = {"Serif", "Inter", "Monospaced", "Serif", "Bold", "Serif", "Italic","SansSerif", "Dialog", "DialogInput"};
             //TM Colors
             z.setColor(new Color(rx.nextInt(256),
             rx.nextInt(256), rx.nextInt(256)));

@@ -1179,8 +1179,38 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
+        }else if(DindingPosterior.getText().trim().equals("")){
+            Valid.textKosong(DindingPosterior,"Dinding Posterior");
+        }else if(Uvula.getText().trim().equals("")){
+            Valid.textKosong(Uvula,"Uvula");
+        }else if(ArkusFaring.getText().trim().equals("")){
+            Valid.textKosong(ArkusFaring,"Arkus Faring");
+        }else if(Tonsil.getText().trim().equals("")){
+            Valid.textKosong(Tonsil,"Tonsil");
+        }else if(TonsilLingual.getText().trim().equals("")){
+            Valid.textKosong(TonsilLingual,"Tonsil Lingual");
+        }else if(Valekula.getText().trim().equals("")){
+            Valid.textKosong(Valekula,"Valekula");
+        }else if(SinusPiriformis.getText().trim().equals("")){
+            Valid.textKosong(SinusPiriformis,"Sinus Piriformis");
+        }else if(Epiglitos.getText().trim().equals("")){
+            Valid.textKosong(Epiglitos,"Epiglitos");
+        }else if(PlikaVentrikulais.getText().trim().equals("")){
+            Valid.textKosong(PlikaVentrikulais,"Plika Ventrikulais");
+        }else if(Arytenoid.getText().trim().equals("")){
+            Valid.textKosong(Arytenoid,"Arytenoid");
+        }else if(RimaVocalis.getText().trim().equals("")){
+            Valid.textKosong(RimaVocalis,"Rima Vocalis");
+        }else if(PitaSuara.getText().trim().equals("")){
+            Valid.textKosong(PitaSuara,"Pita Suara");
+        }else if(Lainlain.getText().trim().equals("")){
+            Valid.textKosong(Lainlain,"Lain-lain");
         }else if(Kesan.getText().trim().equals("")){
             Valid.textKosong(Kesan,"Kesan");
+        }else if(Saran.getText().trim().equals("")){
+            Valid.textKosong(Saran,"Saran");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1248,6 +1278,38 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
+        }else if(DindingPosterior.getText().trim().equals("")){
+            Valid.textKosong(DindingPosterior,"Dinding Posterior");
+        }else if(Uvula.getText().trim().equals("")){
+            Valid.textKosong(Uvula,"Uvula");
+        }else if(ArkusFaring.getText().trim().equals("")){
+            Valid.textKosong(ArkusFaring,"Arkus Faring");
+        }else if(Tonsil.getText().trim().equals("")){
+            Valid.textKosong(Tonsil,"Tonsil");
+        }else if(TonsilLingual.getText().trim().equals("")){
+            Valid.textKosong(TonsilLingual,"Tonsil Lingual");
+        }else if(Valekula.getText().trim().equals("")){
+            Valid.textKosong(Valekula,"Valekula");
+        }else if(SinusPiriformis.getText().trim().equals("")){
+            Valid.textKosong(SinusPiriformis,"Sinus Piriformis");
+        }else if(Epiglitos.getText().trim().equals("")){
+            Valid.textKosong(Epiglitos,"Epiglitos");
+        }else if(PlikaVentrikulais.getText().trim().equals("")){
+            Valid.textKosong(PlikaVentrikulais,"Plika Ventrikulais");
+        }else if(Arytenoid.getText().trim().equals("")){
+            Valid.textKosong(Arytenoid,"Arytenoid");
+        }else if(RimaVocalis.getText().trim().equals("")){
+            Valid.textKosong(RimaVocalis,"Rima Vocalis");
+        }else if(PitaSuara.getText().trim().equals("")){
+            Valid.textKosong(PitaSuara,"Pita Suara");
+        }else if(Lainlain.getText().trim().equals("")){
+            Valid.textKosong(Lainlain,"Lain-lain");
+        }else if(Kesan.getText().trim().equals("")){
+            Valid.textKosong(Kesan,"Kesan");
+        }else if(Saran.getText().trim().equals("")){
+            Valid.textKosong(Saran,"Saran");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1927,10 +1989,10 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnHapus.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_faring_laring());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_endoskopi_faring_laring());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

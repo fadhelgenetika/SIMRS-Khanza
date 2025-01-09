@@ -991,9 +991,19 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Uterus.getText().trim().equals("")){
+            Valid.textKosong(Uterus,"Uterus");
+        }else if(Parametrium.getText().trim().equals("")){
+            Valid.textKosong(Parametrium,"Parametrium");
+        }else if(Ovarium.getText().trim().equals("")){
+            Valid.textKosong(Ovarium,"Ovarium");
+        }else if(Doppler.getText().trim().equals("")){
+            Valid.textKosong(Doppler,"Doppler");
+        }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
             if(akses.getkode().equals("Admin Utama")){
@@ -1059,9 +1069,19 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
+        }else if(KirimanDari.getText().trim().equals("")){
+            Valid.textKosong(KirimanDari,"Kiriman Dari");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Uterus.getText().trim().equals("")){
+            Valid.textKosong(Uterus,"Uterus");
+        }else if(Parametrium.getText().trim().equals("")){
+            Valid.textKosong(Parametrium,"Parametrium");
+        }else if(Ovarium.getText().trim().equals("")){
+            Valid.textKosong(Ovarium,"Ovarium");
+        }else if(Doppler.getText().trim().equals("")){
+            Valid.textKosong(Doppler,"Doppler");
+        }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
             if(tbObat.getSelectedRow()>-1){
@@ -1565,7 +1585,6 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         Parametrium.setText("");
         Ovarium.setText("");
         Doppler.setText("");
-        Kesimpulan.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         KirimanDari.requestFocus();
@@ -1627,10 +1646,10 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_usg_gynecologi());
-        BtnHapus.setEnabled(akses.gethasil_usg_gynecologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_gynecologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_gynecologi());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+//        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

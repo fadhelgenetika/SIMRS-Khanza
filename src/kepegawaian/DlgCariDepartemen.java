@@ -373,29 +373,17 @@ public final class DlgCariDepartemen extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("departemen");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("KodeDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeDepartemen").asText(),list.path("NamaDepartemen").asText()
-                        });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("KodeDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodeDepartemen").asText(),list.path("NamaDepartemen").asText()
-                            });                    
-                        }
+                        });                    
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
